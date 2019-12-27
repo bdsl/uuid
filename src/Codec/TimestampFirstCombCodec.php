@@ -44,10 +44,14 @@ use Ramsey\Uuid\UuidInterface;
  */
 class TimestampFirstCombCodec extends StringCodec
 {
+    /**
+     * @psalm-pure
+     */
     public function encode(UuidInterface $uuid): string
     {
         $sixPieceComponents = array_values($uuid->getFieldsHex());
 
+        /** @psalm-suppress ImpureMethodCall */
         $this->swapTimestampAndRandomBits($sixPieceComponents);
 
         return vsprintf(
@@ -56,6 +60,9 @@ class TimestampFirstCombCodec extends StringCodec
         );
     }
 
+    /**
+     * @psalm-pure
+     */
     public function encodeBinary(UuidInterface $uuid): string
     {
         $stringEncoding = $this->encode($uuid);
@@ -66,12 +73,15 @@ class TimestampFirstCombCodec extends StringCodec
     /**
      * @throws InvalidUuidStringException
      *
+     * @psalm-pure
+     *
      * @inheritDoc
      */
     public function decode(string $encodedUuid): UuidInterface
     {
         $fivePieceComponents = $this->extractComponents($encodedUuid);
 
+        /** @psalm-suppress ImpureMethodCall */
         $this->swapTimestampAndRandomBits($fivePieceComponents);
 
         return $this->getBuilder()->build($this, $this->getFields($fivePieceComponents));
@@ -79,6 +89,8 @@ class TimestampFirstCombCodec extends StringCodec
 
     /**
      * @throws InvalidArgumentException if $bytes is an invalid length
+     *
+     * @psalm-pure
      *
      * @inheritDoc
      */

@@ -27,6 +27,8 @@ class DegradedNumberConverter implements NumberConverterInterface
     /**
      * @throws UnsatisfiedDependencyException if the chosen converter is not present
      *
+     * @psalm-pure
+     *
      * @inheritDoc
      */
     public function fromHex(string $hex): string
@@ -41,6 +43,8 @@ class DegradedNumberConverter implements NumberConverterInterface
 
     /**
      * @throws UnsatisfiedDependencyException if the chosen converter is not present
+     *
+     * @psalm-pure
      *
      * @inheritDoc
      */

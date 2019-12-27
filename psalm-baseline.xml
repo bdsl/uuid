@@ -6,10 +6,6 @@
     </MixedArgument>
   </file>
   <file src="src/DegradedUuid.php">
-    <ImpureMethodCall occurrences="2">
-      <code>fromHex</code>
-      <code>convertTime</code>
-    </ImpureMethodCall>
     <PossiblyInvalidArgument occurrences="1">
       <code>$exception-&gt;getCode()</code>
     </PossiblyInvalidArgument>
@@ -90,23 +86,6 @@
     <DocblockTypeContradiction occurrences="1">
       <code>self::$factory</code>
     </DocblockTypeContradiction>
-    <ImpureMethodCall occurrences="15">
-      <code>encodeBinary</code>
-      <code>convertTime</code>
-      <code>fromHex</code>
-      <code>fromHex</code>
-      <code>fromHex</code>
-      <code>encode</code>
-      <code>getFactory</code>
-      <code>fromBytes</code>
-      <code>getFactory</code>
-      <code>fromString</code>
-      <code>getFactory</code>
-      <code>fromInteger</code>
-      <code>getFactory</code>
-      <code>getValidator</code>
-      <code>validate</code>
-    </ImpureMethodCall>
     <PossiblyInvalidArgument occurrences="1">
       <code>$exception-&gt;getCode()</code>
     </PossiblyInvalidArgument>

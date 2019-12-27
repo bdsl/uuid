@@ -42,6 +42,8 @@ class DegradedUuidBuilder implements UuidBuilderInterface
      *     use when constructing the DegradedUuid
      * @param TimeConverterInterface $timeConverter The time converter to use
      *     for converting timestamps extracted from a UUID to Unix timestamps
+     *
+     * @psalm-pure
      */
     public function __construct(
         NumberConverterInterface $numberConverter,
@@ -59,6 +61,8 @@ class DegradedUuidBuilder implements UuidBuilderInterface
      *     see {@see \Ramsey\Uuid\UuidInterface::getFieldsHex()} for array structure.
      *
      * @return DegradedUuid The DegradedUuidBuild returns an instance of Ramsey\Uuid\DegradedUuid
+     *
+     * @psalm-pure
      */
     public function build(CodecInterface $codec, array $fields): UuidInterface
     {

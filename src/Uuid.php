@@ -623,6 +623,8 @@ class Uuid implements UuidInterface
 
     /**
      * Returns the factory used to create UUIDs
+     *
+     * @psalm-pure
      */
     public static function getFactory(): UuidFactoryInterface
     {

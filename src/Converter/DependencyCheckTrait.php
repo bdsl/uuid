@@ -25,6 +25,8 @@ trait DependencyCheckTrait
      * Returns boolean true if the current build of PHP is a 64-bit build,
      * throws UnsatisfiedDependencyException otherwise
      *
+     * @psalm-pure
+     *
      * @throws UnsatisfiedDependencyException if PHP is not 64-bit
      */
     private function check64BitPhp(): bool
@@ -41,6 +43,8 @@ trait DependencyCheckTrait
     /**
      * Returns boolean true if the GMP extension is loaded, throws
      * UnsatisfiedDependencyException otherwise
+     *
+     * @psalm-pure
      *
      * @throws UnsatisfiedDependencyException if GMP is not loaded
      */
@@ -59,6 +63,8 @@ trait DependencyCheckTrait
      * Returns boolean true if the moontoast/math library is present, throws
      * UnsatisfiedDependencyException otherwise
      *
+     * @psalm-pure
+     *
      * @throws UnsatisfiedDependencyException if moontoast/math is not loaded
      */
     private function checkMoontoastMathLibrary(): bool
@@ -72,6 +78,9 @@ trait DependencyCheckTrait
         return true;
     }
 
+    /**
+     * @psalm-pure
+     */
     protected function getPhpIntSize(): int
     {
         return PHP_INT_SIZE;

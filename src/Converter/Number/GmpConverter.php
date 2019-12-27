@@ -34,6 +34,8 @@ class GmpConverter implements NumberConverterInterface
      * @throws InvalidArgumentException if $hex is not a hexadecimal string
      * @throws UnsatisfiedDependencyException if the chosen converter is not present
      *
+     * @psalm-pure
+     *
      * @inheritDoc
      */
     public function fromHex(string $hex): string
@@ -49,6 +51,8 @@ class GmpConverter implements NumberConverterInterface
     /**
      * @throws InvalidArgumentException if $integer is not an integer string
      * @throws UnsatisfiedDependencyException if the chosen converter is not present
+     *
+     * @psalm-pure
      *
      * @inheritDoc
      */

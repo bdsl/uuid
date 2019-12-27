@@ -27,15 +27,20 @@ interface NumberConverterInterface
      * The integer representation returned is a string representation of the
      * integer, to accommodate unsigned integers greater than PHP_INT_MAX.
      *
+     * @psalm-pure
+     *
      * @param string $hex The hexadecimal string representation to convert
      *
      * @return string String representation of an integer
+     *
      */
     public function fromHex(string $hex): string;
 
     /**
      * Converts a string integer representation into a hexadecimal string
      * representation of the number
+     *
+     * @psalm-pure
      *
      * @param string $number A string integer representation to convert; this
      *     must be a numeric string to accommodate unsigned integers greater
