@@ -70,6 +70,9 @@ class BigNumberTimeConverter implements TimeConverterInterface
      * @throws UnsatisfiedDependencyException if the chosen converter is not present
      *
      * @inheritDoc
+     *
+     * @psalm-pure
+     * @psalm-suppress ImpureMethodCall
      */
     public function convertTime(string $timestamp): string
     {

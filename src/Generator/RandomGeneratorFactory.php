@@ -22,6 +22,8 @@ class RandomGeneratorFactory
 {
     /**
      * Returns a default random generator, based on the current environment
+     *
+     * @psalm-mutation-free
      */
     public static function getGenerator(): RandomGeneratorInterface
     {

@@ -26,6 +26,8 @@ trait NumberStringTrait
      * Returns boolean true if the string $integer contains only digits, throws
      * InvalidArgumentException otherwise
      *
+     * @psalm-pure
+     *
      * @param string $integer The string integer value to check
      * @param string $param The name of the parameter being checked
      *
@@ -54,6 +56,8 @@ trait NumberStringTrait
     /**
      * Returns boolean true if the string $hex contains only hexadecimal
      * characters, throws InvalidArgumentException otherwise
+     *
+     * @psalm-pure
      *
      * @param string $hex The hexadecimal string value to check
      * @param string $param The name of the parameter being checked

@@ -25,11 +25,15 @@ use Ramsey\Uuid\UuidInterface;
  */
 class GuidStringCodec extends StringCodec
 {
+    /**
+     * @psalm-pure
+     */
     public function encode(UuidInterface $uuid): string
     {
         $components = array_values($uuid->getFieldsHex());
 
         // Swap byte-order on the first three fields.
+        /** @psalm-suppress ImpureMethodCall */
         $this->swapFields($components);
 
         return vsprintf(
@@ -38,6 +42,9 @@ class GuidStringCodec extends StringCodec
         );
     }
 
+    /**
+     * @psalm-pure
+     */
     public function encodeBinary(UuidInterface $uuid): string
     {
         $components = array_values($uuid->getFieldsHex());
@@ -48,12 +55,15 @@ class GuidStringCodec extends StringCodec
     /**
      * @throws InvalidUuidStringException
      *
+     * @psalm-pure
+     *
      * @inheritDoc
      */
     public function decode(string $encodedUuid): UuidInterface
     {
         $components = $this->extractComponents($encodedUuid);
 
+        /** @psalm-suppress ImpureMethodCall */
         $this->swapFields($components);
 
         return $this->getBuilder()->build($this, $this->getFields($components));
@@ -61,6 +71,8 @@ class GuidStringCodec extends StringCodec
 
     /**
      * @throws InvalidArgumentException if $bytes is an invalid length
+     *
+     * @psalm-pure
      *
      * @inheritDoc
      */

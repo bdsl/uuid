@@ -31,6 +31,8 @@ interface UuidBuilderInterface
      *
      * @return UuidInterface Implementations may choose to return more specific
      *     instances of UUIDs that implement UuidInterface
+     *
+     * @psalm-mutation-free
      */
     public function build(CodecInterface $codec, array $fields): UuidInterface;
 }

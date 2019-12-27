@@ -34,6 +34,8 @@ class BigNumberConverter implements NumberConverterInterface
      * @throws InvalidArgumentException if $hex is not a hexadecimal string
      * @throws UnsatisfiedDependencyException if the chosen converter is not present
      *
+     * @psalm-pure
+     *
      * @inheritDoc
      */
     public function fromHex(string $hex): string
@@ -41,12 +43,15 @@ class BigNumberConverter implements NumberConverterInterface
         $this->checkMoontoastMathLibrary();
         $this->checkHexadecimalString($hex, 'hex');
 
+        /**  @psalm-suppress ImpureMethodCall */
         return BigNumber::convertToBase10($hex, 16);
     }
 
     /**
      * @throws InvalidArgumentException if $integer is not an integer string
      * @throws UnsatisfiedDependencyException if the chosen converter is not present
+     *
+     * @psalm-pure
      *
      * @inheritDoc
      */
@@ -55,6 +60,7 @@ class BigNumberConverter implements NumberConverterInterface
         $this->checkMoontoastMathLibrary();
         $this->checkIntegerString($number, 'number');
 
+        /**  @psalm-suppress ImpureMethodCall */
         return BigNumber::convertFromBase10($number, 16);
     }
 }
