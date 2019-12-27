@@ -42,6 +42,9 @@ class DefaultTimeGenerator implements TimeGeneratorInterface
      */
     private $timeProvider;
 
+    /**
+     * @psalm-pure
+     */
     public function __construct(
         NodeProviderInterface $nodeProvider,
         TimeConverterInterface $timeConverter,

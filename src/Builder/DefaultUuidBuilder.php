@@ -42,6 +42,8 @@ class DefaultUuidBuilder implements UuidBuilderInterface
      *     use when constructing the Uuid
      * @param TimeConverterInterface $timeConverter The time converter to use
      *     for converting timestamps extracted from a UUID to Unix timestamps
+     *
+     * @psalm-pure
      */
     public function __construct(
         NumberConverterInterface $numberConverter,
@@ -59,6 +61,8 @@ class DefaultUuidBuilder implements UuidBuilderInterface
      *     see {@see \Ramsey\Uuid\UuidInterface::getFieldsHex()} for array structure.
      *
      * @return Uuid The DefaultUuidBuilder returns an instance of Ramsey\Uuid\Uuid
+     *
+     * @psalm-mutation-free
      */
     public function build(CodecInterface $codec, array $fields): UuidInterface
     {

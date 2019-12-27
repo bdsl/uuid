@@ -29,6 +29,8 @@ class FallbackNodeProvider implements NodeProviderInterface
 
     /**
      * @param NodeProviderInterface[] $providers Array of node providers
+     *
+     * @psalm-pure
      */
     public function __construct(array $providers)
     {

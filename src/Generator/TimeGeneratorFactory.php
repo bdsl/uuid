@@ -39,6 +39,9 @@ class TimeGeneratorFactory
      */
     private $timeProvider;
 
+    /**
+     * @psalm-pure
+     */
     public function __construct(
         NodeProviderInterface $nodeProvider,
         TimeConverterInterface $timeConverter,
@@ -51,6 +54,8 @@ class TimeGeneratorFactory
 
     /**
      * Returns a default time generator, based on the current environment
+     *
+     * @psalm-mutation-free
      */
     public function getGenerator(): TimeGeneratorInterface
     {

@@ -61,6 +61,8 @@ class UuidFactory implements UuidFactoryInterface
 
     /**
      * @param FeatureSet $features A set of available features in the current environment
+     *
+     * @psalm-pure
      */
     public function __construct(?FeatureSet $features = null)
     {
@@ -177,6 +179,9 @@ class UuidFactory implements UuidFactoryInterface
         $this->uuidBuilder = $builder;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function getValidator(): ValidatorInterface
     {
         return $this->validator;
@@ -193,11 +198,17 @@ class UuidFactory implements UuidFactoryInterface
         $this->validator = $validator;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function fromBytes(string $bytes): UuidInterface
     {
         return $this->codec->decodeBytes($bytes);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function fromString(string $uuid): UuidInterface
     {
         $uuid = strtolower($uuid);
@@ -205,6 +216,9 @@ class UuidFactory implements UuidFactoryInterface
         return $this->codec->decode($uuid);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function fromInteger(string $integer): UuidInterface
     {
         $hex = $this->numberConverter->toHex($integer);

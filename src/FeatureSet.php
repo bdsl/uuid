@@ -128,6 +128,8 @@ class FeatureSet
      *     to generate version 1 UUIDs
      * @param bool $forceNoGmp True to disable the use of ext-gmp (primarily
      *     for testing purposes)
+     *
+     * @psalm-pure
      */
     public function __construct(
         bool $useGuids = false,
@@ -149,7 +151,7 @@ class FeatureSet
         $this->codec = $this->buildCodec($useGuids);
         $this->nodeProvider = $this->buildNodeProvider();
         $this->randomGenerator = $this->buildRandomGenerator();
-        $this->setTimeProvider(new SystemTimeProvider());
+        $this->timeGenerator = $this->buildTimeGenerator(new SystemTimeProvider());
         $this->validator = new Validator();
     }
 
@@ -229,6 +231,8 @@ class FeatureSet
      * Returns a codec configured for this environment
      *
      * @param bool $useGuids Whether to build UUIDs using the GuidStringCodec
+     *
+     * @psalm-pure
      */
     private function buildCodec(bool $useGuids = false): CodecInterface
     {
@@ -241,6 +245,8 @@ class FeatureSet
 
     /**
      * Returns a node provider configured for this environment
+     *
+     * @psalm-mutation-free
      */
     private function buildNodeProvider(): NodeProviderInterface
     {
@@ -256,6 +262,8 @@ class FeatureSet
 
     /**
      * Returns a number converter configured for this environment
+     *
+     * @psalm-mutation-free
      */
     private function buildNumberConverter(): NumberConverterInterface
     {
@@ -272,6 +280,8 @@ class FeatureSet
 
     /**
      * Returns a random generator configured for this environment
+     *
+     * @psalm-pure
      */
     private function buildRandomGenerator(): RandomGeneratorInterface
     {
@@ -283,6 +293,8 @@ class FeatureSet
      *
      * @param TimeProviderInterface $timeProvider The time provider to use with
      *     the time generator
+     *
+     * @psalm-mutation-free
      */
     private function buildTimeGenerator(TimeProviderInterface $timeProvider): TimeGeneratorInterface
     {
@@ -299,6 +311,8 @@ class FeatureSet
 
     /**
      * Returns a time converter configured for this environment
+     *
+     * @psalm-mutation-free
      */
     private function buildTimeConverter(): TimeConverterInterface
     {
@@ -319,6 +333,8 @@ class FeatureSet
 
     /**
      * Returns a UUID builder configured for this environment
+     *
+     * @psalm-mutation-free
      */
     private function buildUuidBuilder(): UuidBuilderInterface
     {
@@ -331,6 +347,8 @@ class FeatureSet
 
     /**
      * Returns true if moontoast/math is available
+     *
+     * @psalm-mutation-free
      */
     private function hasBigNumber(): bool
     {
@@ -339,6 +357,8 @@ class FeatureSet
 
     /**
      * Returns true if ext-gmp is available
+     *
+     * @psalm-mutation-free
      */
     private function hasGmp(): bool
     {
@@ -346,7 +366,9 @@ class FeatureSet
     }
 
     /**
-     * Returns true if the PHP build is 64-bit
+     * Returns true if the PHP build is 6154-bit
+     *
+     * @psalm-mutation-free
      */
     private function is64BitSystem(): bool
     {

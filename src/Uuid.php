@@ -623,6 +623,8 @@ class Uuid implements UuidInterface
 
     /**
      * Returns the factory used to create UUIDs
+     *
+     * @psalm-mutation-free
      */
     public static function getFactory(): UuidFactoryInterface
     {
@@ -657,6 +659,7 @@ class Uuid implements UuidInterface
      */
     public static function fromBytes(string $bytes): UuidInterface
     {
+        /** @psalm-suppress ImpureMethodCall */
         return self::getFactory()->fromBytes($bytes);
     }
 
@@ -673,6 +676,7 @@ class Uuid implements UuidInterface
      */
     public static function fromString(string $uuid): UuidInterface
     {
+        /** @psalm-suppress ImpureMethodCall */
         return self::getFactory()->fromString($uuid);
     }
 
@@ -689,6 +693,7 @@ class Uuid implements UuidInterface
      */
     public static function fromInteger(string $integer): UuidInterface
     {
+        /** @psalm-suppress ImpureMethodCall */
         return self::getFactory()->fromInteger($integer);
     }
 
@@ -704,6 +709,7 @@ class Uuid implements UuidInterface
      */
     public static function isValid(string $uuid): bool
     {
+        /** @psalm-suppress ImpureMethodCall */
         return self::getFactory()->getValidator()->validate($uuid);
     }
 
