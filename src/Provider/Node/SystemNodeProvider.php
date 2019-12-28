@@ -40,6 +40,7 @@ class SystemNodeProvider implements NodeProviderInterface
         }
 
         $pattern = '/[^:]([0-9A-Fa-f]{2}([:-])[0-9A-Fa-f]{2}(\2[0-9A-Fa-f]{2}){4})[^:]/';
+
         $matches = [];
 
         // First, try a Linux-specific approach.
@@ -49,6 +50,7 @@ class SystemNodeProvider implements NodeProviderInterface
         // the first one found.
         if ($node === false) {
             if (preg_match_all($pattern, $this->getIfconfig(), $matches, PREG_PATTERN_ORDER)) {
+                /** @var string[][] $matches */
                 $node = $matches[1][0] ?? false;
             }
         }
@@ -57,6 +59,7 @@ class SystemNodeProvider implements NodeProviderInterface
             $node = str_replace([':', '-'], '', $node);
 
             if (is_array($node)) {
+                /** @var string[] $node */
                 $node = $node[0] ?? false;
             }
         }

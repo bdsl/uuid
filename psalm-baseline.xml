@@ -24,10 +24,6 @@
     </PossiblyInvalidArgument>
   </file>
   <file src="src/Provider/Node/SystemNodeProvider.php">
-    <MixedAssignment occurrences="2">
-      <code>$node</code>
-      <code>$node</code>
-    </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>getNode</code>
     </MixedInferredReturnType>
@@ -45,10 +41,5 @@
     <PossiblyNullPropertyAssignmentValue occurrences="1">
       <code>null</code>
     </PossiblyNullPropertyAssignmentValue>
-  </file>
-  <file src="src/UuidFactory.php">
-    <MixedAssignment occurrences="1">
-      <code>$hash</code>
-    </MixedAssignment>
   </file>
 </files>

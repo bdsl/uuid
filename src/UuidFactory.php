@@ -303,9 +303,7 @@ class UuidFactory implements UuidFactoryInterface
             $ns = $this->codec->decode($ns);
         }
 
-        $hash = call_user_func($hashFunction, $ns->getBytes() . $name);
-
-        assert(is_string($hash));
+        $hash = $hashFunction($ns->getBytes() . $name);
 
         return $this->uuidFromHashedName($hash, $version);
     }
