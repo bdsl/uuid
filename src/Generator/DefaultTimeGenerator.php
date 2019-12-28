@@ -21,6 +21,8 @@ use Ramsey\Uuid\Exception\RandomSourceException;
 use Ramsey\Uuid\Provider\NodeProviderInterface;
 use Ramsey\Uuid\Provider\TimeProviderInterface;
 
+use function is_null;
+
 /**
  * DefaultTimeGenerator generates strings of binary data based on a node ID,
  * clock sequence, and the current time
@@ -128,6 +130,8 @@ class DefaultTimeGenerator implements TimeGeneratorInterface
         if (!ctype_xdigit((string) $node) || strlen((string) $node) > 12) {
             throw new InvalidArgumentException('Invalid node value');
         }
+
+        assert(!is_null($node));
 
         return strtolower(sprintf('%012s', $node));
     }

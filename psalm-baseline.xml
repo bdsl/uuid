@@ -1,24 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.8.0@bdb2f3c2be7bd56b180535dca33d72b74ffe1af7">
-  <file src="src/Generator/DefaultTimeGenerator.php">
-    <PossiblyNullArgument occurrences="1">
-      <code>$node</code>
-    </PossiblyNullArgument>
-  </file>
-  <file src="src/Provider/Node/SystemNodeProvider.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>getNode</code>
-    </MixedInferredReturnType>
-    <TypeDoesNotContainType occurrences="1">
-      <code>is_array($node)</code>
-    </TypeDoesNotContainType>
-  </file>
-  <file src="src/Uuid.php">
-    <DocblockTypeContradiction occurrences="1">
-      <code>self::$factory</code>
-    </DocblockTypeContradiction>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>null</code>
-    </PossiblyNullPropertyAssignmentValue>
-  </file>
-</files>
+<files psalm-version="3.8.0@bdb2f3c2be7bd56b180535dca33d72b74ffe1af7"/>

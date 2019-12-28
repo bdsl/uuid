@@ -30,6 +30,8 @@ class SystemNodeProvider implements NodeProviderInterface
 {
     /**
      * @inheritDoc
+     *
+     * @psalm-suppress MixedInferredReturnType
      */
     public function getNode()
     {
@@ -55,9 +57,10 @@ class SystemNodeProvider implements NodeProviderInterface
             }
         }
 
-        if (is_string($node)) {
+        if ($node !== false) {
             $node = str_replace([':', '-'], '', $node);
 
+            /** @psalm-suppress TypeDoesNotContainType - str_replace returns string|string[] - possible Psalm bug? */
             if (is_array($node)) {
                 /** @var string[] $node */
                 $node = $node[0] ?? false;
@@ -107,7 +110,7 @@ class SystemNodeProvider implements NodeProviderInterface
     /**
      * Returns MAC address from the first system interface via the sysfs interface
      *
-     * @return string|bool
+     * @return string|false
      */
     protected function getSysfs()
     {

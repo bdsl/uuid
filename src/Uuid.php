@@ -142,7 +142,7 @@ class Uuid implements UuidInterface
     public const UUID_TYPE_HASH_SHA1 = 5;
 
     /**
-     * @var UuidFactoryInterface
+     * @var UuidFactoryInterface|null
      */
     private static $factory = null;
 
