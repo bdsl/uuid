@@ -22,6 +22,8 @@ use Ramsey\Uuid\Generator\TimeGeneratorInterface;
 use Ramsey\Uuid\Provider\NodeProviderInterface;
 use Ramsey\Uuid\Validator\ValidatorInterface;
 
+use function is_string;
+
 class UuidFactory implements UuidFactoryInterface
 {
     /**
@@ -289,7 +291,7 @@ class UuidFactory implements UuidFactoryInterface
      * @param string|UuidInterface $ns The namespace (must be a valid UUID)
      * @param string $name The name to hash together with the namespace
      * @param int $version The version of UUID to create (3 or 5)
-     * @param callable $hashFunction The hash function to use when hashing together
+     * @param callable(string):string $hashFunction The hash function to use when hashing together
      *     the namespace and name
      *
      * @return UuidInterface An instance of UuidInterface, created by hashing
@@ -302,6 +304,8 @@ class UuidFactory implements UuidFactoryInterface
         }
 
         $hash = call_user_func($hashFunction, $ns->getBytes() . $name);
+
+        assert(is_string($hash));
 
         return $this->uuidFromHashedName($hash, $version);
     }

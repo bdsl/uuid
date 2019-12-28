@@ -16,6 +16,10 @@ namespace Ramsey\Uuid\Provider\Node;
 
 use Ramsey\Uuid\Provider\NodeProviderInterface;
 
+use function is_array;
+
+use const PHP_OS;
+
 /**
  * SystemNodeProvider retrieves the system node ID, if possible
  *
@@ -49,7 +53,7 @@ class SystemNodeProvider implements NodeProviderInterface
             }
         }
 
-        if ($node !== false) {
+        if (is_string($node)) {
             $node = str_replace([':', '-'], '', $node);
 
             if (is_array($node)) {
@@ -74,7 +78,7 @@ class SystemNodeProvider implements NodeProviderInterface
         }
 
         ob_start();
-        switch (strtoupper(substr(constant('PHP_OS'), 0, 3))) {
+        switch (strtoupper(substr(PHP_OS, 0, 3))) {
             case 'WIN':
                 passthru('ipconfig /all 2>&1');
 
@@ -106,7 +110,7 @@ class SystemNodeProvider implements NodeProviderInterface
     {
         $mac = false;
 
-        if (strtoupper(constant('PHP_OS')) === 'LINUX') {
+        if (strtoupper(PHP_OS) === 'LINUX') {
             $addressPaths = glob('/sys/class/net/*/address', GLOB_NOSORT);
 
             if ($addressPaths === false || count($addressPaths) === 0) {
@@ -114,11 +118,13 @@ class SystemNodeProvider implements NodeProviderInterface
             }
 
             $macs = [];
-            array_walk($addressPaths, function ($addressPath) use (&$macs): void {
+            array_walk($addressPaths, function (string $addressPath) use (&$macs): void {
                 if (is_readable($addressPath)) {
                     $macs[] = file_get_contents($addressPath);
                 }
             });
+
+            assert(is_array($macs));
 
             $macs = array_map('trim', $macs);
 
