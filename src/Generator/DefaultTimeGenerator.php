@@ -72,7 +72,7 @@ class DefaultTimeGenerator implements TimeGeneratorInterface
             } catch (\Throwable $exception) {
                 throw new RandomSourceException(
                     $exception->getMessage(),
-                    $exception->getCode(),
+                    (int) $exception->getCode(),
                     $exception
                 );
             }

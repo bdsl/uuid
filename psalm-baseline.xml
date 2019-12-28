@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="3.8.0@bdb2f3c2be7bd56b180535dca33d72b74ffe1af7">
-  <file src="src/DegradedUuid.php">
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$exception-&gt;getCode()</code>
-    </PossiblyInvalidArgument>
-  </file>
   <file src="src/Generator/DefaultTimeGenerator.php">
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$exception-&gt;getCode()</code>
-    </PossiblyInvalidArgument>
     <PossiblyNullArgument occurrences="1">
       <code>$node</code>
     </PossiblyNullArgument>
-  </file>
-  <file src="src/Generator/RandomBytesGenerator.php">
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$exception-&gt;getCode()</code>
-    </PossiblyInvalidArgument>
-  </file>
-  <file src="src/Provider/Node/RandomNodeProvider.php">
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$exception-&gt;getCode()</code>
-    </PossiblyInvalidArgument>
   </file>
   <file src="src/Provider/Node/SystemNodeProvider.php">
     <MixedInferredReturnType occurrences="1">
@@ -35,9 +17,6 @@
     <DocblockTypeContradiction occurrences="1">
       <code>self::$factory</code>
     </DocblockTypeContradiction>
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$exception-&gt;getCode()</code>
-    </PossiblyInvalidArgument>
     <PossiblyNullPropertyAssignmentValue occurrences="1">
       <code>null</code>
     </PossiblyNullPropertyAssignmentValue>

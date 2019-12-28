@@ -364,7 +364,7 @@ class Uuid implements UuidInterface
         } catch (\Throwable $exception) {
             throw new DateTimeException(
                 $exception->getMessage(),
-                $exception->getCode(),
+                (int) $exception->getCode(),
                 $exception
             );
         }

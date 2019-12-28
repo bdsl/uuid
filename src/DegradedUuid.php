@@ -52,7 +52,7 @@ class DegradedUuid extends Uuid
         } catch (\Throwable $exception) {
             throw new DateTimeException(
                 $exception->getMessage(),
-                $exception->getCode(),
+                (int) $exception->getCode(),
                 $exception
             );
         }

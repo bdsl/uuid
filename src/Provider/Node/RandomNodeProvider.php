@@ -34,7 +34,7 @@ class RandomNodeProvider implements NodeProviderInterface
         } catch (\Throwable $exception) {
             throw new RandomSourceException(
                 $exception->getMessage(),
-                $exception->getCode(),
+                (int) $exception->getCode(),
                 $exception
             );
         }
