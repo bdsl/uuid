@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.7.2@d9cae720c1af31db9ba27c2bc1fcf9b0dd092fb0">
+<files psalm-version="3.8.0@bdb2f3c2be7bd56b180535dca33d72b74ffe1af7">
   <file src="src/DegradedUuid.php">
     <PossiblyInvalidArgument occurrences="1">
       <code>$exception-&gt;getCode()</code>
@@ -13,51 +13,17 @@
       <code>$node</code>
     </PossiblyNullArgument>
   </file>
-  <file src="src/Generator/PeclUuidRandomGenerator.php">
-    <MixedAssignment occurrences="1">
-      <code>$uuid</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>uuid_parse($uuid)</code>
-    </MixedReturnStatement>
-    <UndefinedFunction occurrences="2">
-      <code>uuid_create(UUID_TYPE_RANDOM)</code>
-      <code>uuid_parse($uuid)</code>
-    </UndefinedFunction>
-  </file>
-  <file src="src/Generator/PeclUuidTimeGenerator.php">
-    <MixedAssignment occurrences="1">
-      <code>$uuid</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>uuid_parse($uuid)</code>
-    </MixedReturnStatement>
-    <UndefinedFunction occurrences="2">
-      <code>uuid_create(UUID_TYPE_TIME)</code>
-      <code>uuid_parse($uuid)</code>
-    </UndefinedFunction>
-  </file>
   <file src="src/Generator/RandomBytesGenerator.php">
     <PossiblyInvalidArgument occurrences="1">
       <code>$exception-&gt;getCode()</code>
     </PossiblyInvalidArgument>
   </file>
   <file src="src/Provider/Node/RandomNodeProvider.php">
-    <PossiblyInvalidArgument occurrences="2">
+    <PossiblyInvalidArgument occurrences="1">
       <code>$exception-&gt;getCode()</code>
-      <code>hexdec(bin2hex($nodeMsb)) | 0x010000</code>
     </PossiblyInvalidArgument>
   </file>
   <file src="src/Provider/Node/SystemNodeProvider.php">
-    <MissingClosureParamType occurrences="1">
-      <code>$addressPath</code>
-    </MissingClosureParamType>
     <MixedAssignment occurrences="2">
       <code>$node</code>
       <code>$node</code>
